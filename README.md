@@ -1,4 +1,4 @@
-# flv-demux
+# flv-demux-sei
 
 ## 0. Required
 > node v6- (depened on buffer-v6-pollify)
@@ -7,12 +7,17 @@
 1. Video: only AVC
 2. Audio: only AAC
 
-## 2. Run Test
+## 2. Installation
+```bash
+npm install flv-demux-sei
+```
+
+## 3. Run Test
 > cd test && node index.js
 
-## 3. How To Use It
+## 4. How To Use It
 ```javascript
-    const FlvDemux = require('flv-demux');
+    const FlvDemux = require('flv-demux-sei');
     let decoder = new FlvDemux.Decoder();
 
     decoder.on('header', header => {

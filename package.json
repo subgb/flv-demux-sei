@@ -1,5 +1,5 @@
 {
-  "name": "flv-demux",
+  "name": "flv-demux-sei",
   "version": "0.0.6",
   "main": "index.js",
   "scripts": {
