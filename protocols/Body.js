@@ -10,6 +10,13 @@ module.exports = class Body extends EventEmitter {
     return 'body';
   }
 
+  constructor() {
+    super();
+    this.config = {
+      naluLengthSize: 4,
+    };
+  }
+
   decode(buffer, size = 0) {
     for (;;) {
       if (buffer.length < Body.MIN_LENGTH) {
@@ -26,7 +33,7 @@ module.exports = class Body extends EventEmitter {
       }
 
       let tag = new Tag();
-      body = tag.decode(body);
+      body = tag.decode(body, 0, this.config);
       if (!body) {
         return {
           data: buffer,

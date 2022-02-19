@@ -16,7 +16,7 @@ module.exports = class Tag {
     this.prevBuffer = Buffer.alloc(0);
   }
 
-  decode(buffer, size = 0) {
+  decode(buffer, size = 0, config) {
     this.type = buffer.readUInt8(0);
     this.size = buffer.readUInt24BE(1);
 
@@ -49,7 +49,7 @@ module.exports = class Tag {
     }
 
     buffer = buffer.slice(Tag.MIN_LENGTH);
-    let body = this.data.decode(buffer, this.size);
+    let body = this.data.decode(buffer, this.size, config);
     return !body ? false : body;
   }
 
