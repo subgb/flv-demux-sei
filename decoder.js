@@ -59,6 +59,14 @@ module.exports = class FlvDemux extends EventEmitter {
     this.removeAllListeners();
   }
 
+  write(chunk) {
+    this.decode(chunk);
+  }
+
+  end() {
+    this.destroy();
+  }
+
   headerDataHandler(header) {
     this.emit('header', header);
   }
