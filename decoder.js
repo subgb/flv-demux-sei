@@ -15,6 +15,7 @@ module.exports = class FlvDemux extends EventEmitter {
   }
 
   decode(buffer, size = 0) {
+    if (size && buffer.length!=size) buffer=buffer.slice(0, size);
     this.buffer = Buffer.concat([this.buffer, buffer]);
 
     for (;;) {
