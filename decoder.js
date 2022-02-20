@@ -1,8 +1,8 @@
-const EventEmitter = require('events').EventEmitter;
+const {Writable} = require('stream');
 const Header = require('./protocols/Header');
 const Body = require('./protocols/Body');
 
-module.exports = class FlvDemux extends EventEmitter {
+module.exports = class FlvDemux extends Writable {
   constructor() {
     super();
     this.state = Header.STATE;
@@ -61,10 +61,6 @@ module.exports = class FlvDemux extends EventEmitter {
 
   write(chunk) {
     this.decode(chunk);
-  }
-
-  end() {
-    this.destroy();
   }
 
   headerDataHandler(header) {
