@@ -66,7 +66,12 @@ module.exports = class FlvDemux extends EventEmitter {
     this.emit('tag', tag);
     switch (tag.type) {
       case 8: this.emit('audio-tag', tag); break;
-      case 9: this.emit('video-tag', tag); break;
+      case 9: {
+        this.emit('video-tag', tag);
+        for (const sei of tag.data.seiData) {
+          this.emit('sei-data', sei, tag);
+        }
+      } break;
       case 18: this.emit('data-tag', tag); break;
     }
   }
