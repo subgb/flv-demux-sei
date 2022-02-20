@@ -45,3 +45,21 @@ npm install flv-demux-sei
         decoder.destroy();
     }, 5000);
 ```
+
+```javascript
+    const fs = require('fs');
+    const FlvDemux = require('flv-demux-sei');
+    const decoder = new FlvDemux.Decoder();
+
+    decoder.on('audio-tag', tag => {
+        // get audio info
+    });
+    decoder.on('video-tag', tag => {
+        // get video info
+    });
+    decoder.on('sei-data', (sei, tag) => {
+        if (sei.payloadType == 5) doSomething(sei.payload);
+    });
+
+    const stream = fs.createReadStream('./path/to/my-video.flv').pipe(decoder);
+```
