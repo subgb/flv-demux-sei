@@ -1,10 +1,14 @@
 {
   "name": "flv-demux-sei",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "main": "index.js",
   "scripts": {
     "start": "hjs-dev-server",
     "build": "./node_modules/webpack/bin/webpack.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:subgb/flv-demux-sei.git"
   },
   "author": "ErosZy",
   "license": "ISC",
